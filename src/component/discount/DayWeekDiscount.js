@@ -8,12 +8,12 @@ class DayWeekDiscount {
       DECEMBER_DATES.MONTH - 1,
       date,
     );
-
-    this.Divide = this.dayDivide(this.startDate);
-    this.Discount = this.specialDiscount(this.startDate);
+    this.divide = this.dayDivide(this.startDate);
+    this.discount = this.specialDiscount(this.startDate);
   }
 
   dayDivide(date) {
+    // 평일 주말 구분함수
     return DECEMBER_DATES.DAY[date.getDay()];
   }
 
@@ -27,4 +27,4 @@ class DayWeekDiscount {
   // 평일과 주말은 구분했지만 할인률 적용시키는것은 메뉴 함수 구현후
 }
 const discounts = new DayWeekDiscount(25);
-console.log(discounts.Discount);
+console.log(discounts.discount);

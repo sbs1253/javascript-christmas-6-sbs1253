@@ -25,10 +25,21 @@ export const DECEMBER_DATES = Object.freeze({
   MIN_DATE: 1,
   XMAS_DATE: 25,
   MAX_DATE: 31,
+  YEAR: 2023,
+  MONTH: 12,
+  DAY: {
+    0: '평일',
+    1: '평일',
+    2: '평일',
+    3: '평일',
+    4: '평일',
+    5: '주말',
+    6: '주말',
+  },
 });
 
 export const GIFT_MENU = Object.freeze({
-  샴페인: 12000,
+  샴페인: 120000,
 });
 
 export const EVENT_BADGE = Object.freeze({
@@ -40,4 +51,10 @@ export const EVENT_BADGE = Object.freeze({
 export const PRECAUTIONS = Object.freeze({
   MIN_PRICE: 10000,
   MAX_ORDER: 20,
+});
+
+export const ERROR_TEXT = Object.freeze({
+  NUMBER: '[ERROR] 숫자는 1부터 31까지만 입력해 주세요.',
+  NOT_NUMBER: '[ERROR] 날짜는 숫자로만 입력해 주세요.',
+  MENU: '[ERROR] 메뉴는 1개이상 입력해 주세요',
 });
