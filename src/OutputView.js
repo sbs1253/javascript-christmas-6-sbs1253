@@ -1,8 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printMenu() {
+  printMenu([item, quantity]) {
     Console.print('<주문 메뉴>');
+    Console.print(`${item} ${quantity}개`);
   },
   printGiftMenu(totalAmount) {
     Console.print('<증정 메뉴>');

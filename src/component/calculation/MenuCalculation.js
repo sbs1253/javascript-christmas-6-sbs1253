@@ -11,6 +11,7 @@ class MenuCalculation {
   async inputmenu() {
     const inputMenu = await InputView.readMenu();
     const menu = inputMenu.split(',').map((item) => item.split('-'));
+    OutputView.printMenu(...menu);
     return menu;
   }
 
