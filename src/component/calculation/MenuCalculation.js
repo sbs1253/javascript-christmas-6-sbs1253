@@ -5,7 +5,7 @@ import OutputView from '../../OutputView.js';
 
 class MenuCalculation {
   constructor() {
-    this.prices = this.dataMentGet();
+    this.prices = this.dataMenuGet();
   }
 
   async inputmenu() {
@@ -28,7 +28,7 @@ class MenuCalculation {
     menu.forEach(([item, quantity]) => {
       totalAmount += this.matchingMenu([item, quantity]);
     });
-    return totalAmount;
+    OutputView.printTotalPrice(totalAmount);
   }
 
   matchingMenu([item, quantity]) {
