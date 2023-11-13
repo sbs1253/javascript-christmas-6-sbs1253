@@ -39,7 +39,8 @@ export const DECEMBER_DATES = Object.freeze({
 });
 
 export const GIFT_MENU = Object.freeze({
-  샴페인: 120000,
+  GIFT_PRICE: 120000,
+  샴페인: '샴페인',
 });
 
 export const EVENT_BADGE = Object.freeze({

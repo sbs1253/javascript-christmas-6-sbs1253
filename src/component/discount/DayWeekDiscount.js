@@ -26,5 +26,5 @@ class DayWeekDiscount {
 
   // 평일과 주말은 구분했지만 할인률 적용시키는것은 메뉴 함수 구현후
 }
-const discounts = new DayWeekDiscount(25);
-console.log(discounts.discount);
+
+export default DayWeekDiscount;

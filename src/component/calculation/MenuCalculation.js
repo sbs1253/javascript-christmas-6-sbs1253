@@ -30,6 +30,7 @@ class MenuCalculation {
       totalAmount += this.matchingMenu([item, quantity]);
     });
     OutputView.printTotalPrice(totalAmount);
+    return totalAmount;
   }
 
   matchingMenu([item, quantity]) {

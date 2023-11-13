@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { GIFT_MENU } from './component/data.js';
 
 const OutputView = {
   printMenu([item, quantity]) {
@@ -7,7 +8,7 @@ const OutputView = {
   },
   printGiftMenu(totalAmount) {
     Console.print('<증정 메뉴>');
-    if (totalAmount >= 120000) Console.print('샴페인');
+    if (totalAmount >= GIFT_MENU.GIFT_PRICE) Console.print(GIFT_MENU.샴페인);
     else Console.print('없음');
   },
   printTotalPrice(totalAmount) {
