@@ -1,8 +1,9 @@
-import InputView from './InputView.js';
+import MenuCalculation from './component/calculation/MenuCalculation.js';
 
 class App {
   async run() {
-    await InputView.readMenu();
+    const menuCalculation = new MenuCalculation();
+    menuCalculation.menuPriceGet();
   }
 }
 
