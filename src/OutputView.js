@@ -18,12 +18,12 @@ const OutputView = {
     Console.print(`${totalAmount.toLocaleString('ko-KR')}원`);
   },
 
-  printBenefitDetails([
-    xmas,
-    special,
-    [dayWeek, dayWeekDiscount],
-    giftDiscount,
-  ]) {
+  printBenefitDetails(
+    xmas = 0,
+    special = 0,
+    [dayWeek, dayWeekDiscount] = [0, 0],
+    giftDiscount = 0,
+  ) {
     Console.print('<혜택 내역>');
     if (xmas)
       Console.print(
@@ -46,7 +46,8 @@ const OutputView = {
 
   printTotalBenefitAmount(totalDiscountAmount) {
     Console.print('<총혜택 금액>');
-    Console.print(`-${totalDiscountAmount}`);
+    if (totalDiscountAmount) Console.print(`${-totalDiscountAmount}원`);
+    else Console.print('0원');
   },
 
   printEstimatedPaymentAmount(paymentAmount) {
@@ -56,7 +57,8 @@ const OutputView = {
 
   printDecemberEventBadge(eventBadge) {
     Console.print('<12월 이벤트 배지>');
-    Console.print(`${eventBadge}`);
+    if (eventBadge) Console.print(`${eventBadge}`);
+    else Console.print('없음');
   },
 };
 export default OutputView;

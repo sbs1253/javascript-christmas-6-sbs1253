@@ -18,13 +18,24 @@ class TotalDiscount {
     const menuCalculation = new MenuCalculation();
     this.total = await menuCalculation.menuPriceGet();
     this.menu = menuCalculation.menu;
-
     this.xmas = christmasCountdown.xmas;
     this.dayWeek = christmasCountdown.dayWeek;
     this.special = christmasCountdown.special;
 
     this.dayWeekDiscountCalculation();
-    this.addDiscountList();
+    if (this.total >= 10000) {
+      this.addDiscountList();
+    } else this.noDiscountList();
+  }
+
+  noDiscountList() {
+    OutputView.printMenu(...this.menu);
+    OutputView.printTotalPrice(this.total);
+    OutputView.printGiftMenu();
+    OutputView.printBenefitDetails();
+    OutputView.printTotalBenefitAmount();
+    OutputView.printEstimatedPaymentAmount(this.total);
+    OutputView.printDecemberEventBadge();
   }
 
   addDiscountList() {
@@ -35,7 +46,6 @@ class TotalDiscount {
       ? totalDiscountAmount + GIFT_MENU.GIFT_DISCOUNT
       : totalDiscountAmount;
     const eventBadge = this.eventBadgeGet(totalBenefitAmount);
-
     this.Output(
       giftDiscount,
       totalDiscountAmount,
@@ -44,16 +54,21 @@ class TotalDiscount {
     );
   }
 
-  Output(giftDiscount, totalDiscountAmount, eventBadge, totalBenefitAmount) {
+  Output(
+    giftDiscount = 0,
+    totalDiscountAmount = 0,
+    eventBadge = '',
+    totalBenefitAmount = 0,
+  ) {
     OutputView.printMenu(...this.menu);
     OutputView.printTotalPrice(this.total);
     OutputView.printGiftMenu(giftDiscount);
-    OutputView.printBenefitDetails([
+    OutputView.printBenefitDetails(
       this.xmas,
       this.special,
       [this.dayWeek, this.dayWeekDiscount],
       giftDiscount,
-    ]);
+    );
     OutputView.printTotalBenefitAmount(totalBenefitAmount);
     OutputView.printEstimatedPaymentAmount(this.total - totalDiscountAmount);
     OutputView.printDecemberEventBadge(eventBadge);
