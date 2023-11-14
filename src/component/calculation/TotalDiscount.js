@@ -26,6 +26,14 @@ class TotalDiscount {
     this.minimumOrderAmount();
   }
 
+  addDiscountList() {
+    const giftDiscount = this.total >= GIFT_MENU.GIFT_PRICE ? GIFT_MENU.CHAMPAGNE : 0;
+    const totalDiscountAmount = this.xmas + this.special + this.dayWeekDiscount;
+    const totalBenefitAmount = giftDiscount ? totalDiscountAmount + GIFT_MENU.GIFT_DISCOUNT : totalDiscountAmount;
+    const eventBadge = this.eventBadgeGet(totalBenefitAmount);
+    this.Output(giftDiscount, totalDiscountAmount, eventBadge, totalBenefitAmount);
+  }
+
   noDiscountList() {
     OutputView.printMenu(this.menu);
     OutputView.printTotalPrice(this.total);
@@ -36,37 +44,11 @@ class TotalDiscount {
     OutputView.printDecemberEventBadge();
   }
 
-  addDiscountList() {
-    const giftDiscount =
-      this.total >= GIFT_MENU.GIFT_PRICE ? GIFT_MENU.CHAMPAGNE : 0;
-    const totalDiscountAmount = this.xmas + this.special + this.dayWeekDiscount;
-    const totalBenefitAmount = giftDiscount
-      ? totalDiscountAmount + GIFT_MENU.GIFT_DISCOUNT
-      : totalDiscountAmount;
-    const eventBadge = this.eventBadgeGet(totalBenefitAmount);
-    this.Output(
-      giftDiscount,
-      totalDiscountAmount,
-      eventBadge,
-      totalBenefitAmount,
-    );
-  }
-
-  Output(
-    giftDiscount = 0,
-    totalDiscountAmount = 0,
-    eventBadge = '',
-    totalBenefitAmount = 0,
-  ) {
+  Output({ giftDiscount = 0, totalDiscountAmount = 0, eventBadge = '', totalBenefitAmount = 0 }) {
     OutputView.printMenu(this.menu);
     OutputView.printTotalPrice(this.total);
     OutputView.printGiftMenu(giftDiscount);
-    OutputView.printBenefitDetails(
-      this.xmas,
-      this.special,
-      [this.dayWeek, this.dayWeekDiscount],
-      giftDiscount,
-    );
+    OutputView.printBenefitDetails(this.xmas, this.special, [this.dayWeek, this.dayWeekDiscount], giftDiscount);
     OutputView.printTotalBenefitAmount(totalBenefitAmount);
     OutputView.printEstimatedPaymentAmount(this.total - totalDiscountAmount);
     OutputView.printDecemberEventBadge(eventBadge);

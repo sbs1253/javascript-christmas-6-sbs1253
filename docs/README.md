@@ -37,6 +37,7 @@
   - [x] 메뉴는 1이상의 숫자만 입력, 중복메뉴 입력 불가, 메뉴형식을 지켜야함
 
 - [ ] jest를 이용한 테스트 코드 작성
+  - [x] 입력받기
   - [ ] 상수처리
   - [ ] 할인 기능 구현
   - [ ] 유의사항 구현
@@ -46,3 +47,18 @@
 
 - 총혜택 금액 = 할인 금액의 합계 + 증정 메뉴의 가격
 - 할인 후 예상 결제 금액 = 할인 전 총주문 금액 - 할인 금액
+
+📦src
+┣ 📂component
+┃ ┣ 📂calculation
+┃ ┃ ┣ 📜MenuCalculation.js
+┃ ┃ ┗ 📜TotalDiscount.js
+┃ ┣ 📂discount
+┃ ┃ ┣ 📜ChristmasCountdown.js
+┃ ┃ ┗ 📜DayWeekDiscount.js
+┃ ┣ 📜ErrorHandling.js
+┃ ┗ 📜data.js
+┣ 📜App.js
+┣ 📜InputView.js
+┣ 📜OutputView.js
+┗ 📜index.js
