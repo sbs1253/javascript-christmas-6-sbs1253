@@ -23,13 +23,11 @@ class TotalDiscount {
     this.special = christmasCountdown.special;
 
     this.dayWeekDiscountCalculation();
-    if (this.total >= 10000) {
-      this.addDiscountList();
-    } else this.noDiscountList();
+    this.minimumOrderAmount();
   }
 
   noDiscountList() {
-    OutputView.printMenu(...this.menu);
+    OutputView.printMenu(this.menu);
     OutputView.printTotalPrice(this.total);
     OutputView.printGiftMenu();
     OutputView.printBenefitDetails();
@@ -60,7 +58,7 @@ class TotalDiscount {
     eventBadge = '',
     totalBenefitAmount = 0,
   ) {
-    OutputView.printMenu(...this.menu);
+    OutputView.printMenu(this.menu);
     OutputView.printTotalPrice(this.total);
     OutputView.printGiftMenu(giftDiscount);
     OutputView.printBenefitDetails(
@@ -72,6 +70,12 @@ class TotalDiscount {
     OutputView.printTotalBenefitAmount(totalBenefitAmount);
     OutputView.printEstimatedPaymentAmount(this.total - totalDiscountAmount);
     OutputView.printDecemberEventBadge(eventBadge);
+  }
+
+  minimumOrderAmount() {
+    if (this.total >= 10000) {
+      this.addDiscountList();
+    } else this.noDiscountList();
   }
 
   eventBadgeGet(totalBenefitAmount) {

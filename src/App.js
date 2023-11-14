@@ -5,7 +5,7 @@ import TotalDiscount from './component/calculation/TotalDiscount.js';
 class App {
   async run() {
     const totalDiscount = new TotalDiscount();
-    totalDiscount.play();
+    await totalDiscount.play();
   }
 }
 

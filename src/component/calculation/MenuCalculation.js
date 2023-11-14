@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-syntax */
+import { Console } from '@woowacourse/mission-utils';
 import { ORDER_PRICE_MENU } from '../data.js';
 import InputView from '../../InputView.js';
+import Precautions from '../ErrorHandling.js';
 
 class MenuCalculation {
   constructor() {
@@ -23,12 +25,24 @@ class MenuCalculation {
   }
 
   async menuPriceGet() {
-    this.menu = await this.inputmenu();
+    try {
+      this.menu = await this.inputmenu();
+      const precautions = new Precautions(this.menu, this.prices);
+      precautions.menuValidation();
+      const totalAmount = this.totalAmountGet();
+      this.menuType();
+      return totalAmount;
+    } catch (error) {
+      Console.print(error.message);
+      return await this.menuPriceGet();
+    }
+  }
+
+  totalAmountGet() {
     let totalAmount = 0;
     this.menu.forEach(([item, quantity]) => {
       totalAmount += this.matchingMenu([item, quantity]);
     });
-    this.menuType();
     return totalAmount;
   }
 

@@ -62,4 +62,7 @@ export const ERROR_TEXT = Object.freeze({
   NUMBER: '[ERROR] 숫자는 1부터 31까지만 입력해 주세요.',
   NOT_NUMBER: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   MENU: '[ERROR] 메뉴는 1개이상 입력해 주세요',
+  NOT_ORDER_TYPE: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
+  NOT_ONLY_DRINK: '[ERROR] 음료만 주문할 수 없습니다. 다시 입력해 주세요.',
+  MENU_MAX: '[ERROR] 메뉴는 최대 20개까지 입력가능합니다.',
 });
