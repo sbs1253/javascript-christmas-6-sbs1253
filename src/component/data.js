@@ -40,13 +40,17 @@ export const DECEMBER_DATES = Object.freeze({
 
 export const GIFT_MENU = Object.freeze({
   GIFT_PRICE: 120000,
-  샴페인: '샴페인',
+  CHAMPAGNE: '샴페인',
+  GIFT_DISCOUNT: 25000,
 });
 
 export const EVENT_BADGE = Object.freeze({
-  별: 5000,
-  트리: 10000,
-  산타: 20000,
+  STAR_PRICE: 5000,
+  TREE_PRICE: 10000,
+  SANTA_PRICE: 20000,
+  STAR: '별',
+  TREE: '트리',
+  SANTA: '산타',
 });
 
 export const PRECAUTIONS = Object.freeze({
@@ -56,6 +60,6 @@ export const PRECAUTIONS = Object.freeze({
 
 export const ERROR_TEXT = Object.freeze({
   NUMBER: '[ERROR] 숫자는 1부터 31까지만 입력해 주세요.',
-  NOT_NUMBER: '[ERROR] 날짜는 숫자로만 입력해 주세요.',
+  NOT_NUMBER: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   MENU: '[ERROR] 메뉴는 1개이상 입력해 주세요',
 });

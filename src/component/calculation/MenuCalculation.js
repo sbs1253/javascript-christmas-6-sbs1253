@@ -1,17 +1,16 @@
 /* eslint-disable no-restricted-syntax */
 import { ORDER_PRICE_MENU } from '../data.js';
 import InputView from '../../InputView.js';
-import OutputView from '../../OutputView.js';
 
 class MenuCalculation {
   constructor() {
     this.prices = this.dataMenuGet();
+    this.menu = [];
   }
 
   async inputmenu() {
     const inputMenu = await InputView.readMenu();
     const menu = inputMenu.split(',').map((item) => item.split('-'));
-    OutputView.printMenu(...menu);
     return menu;
   }
 
@@ -24,12 +23,12 @@ class MenuCalculation {
   }
 
   async menuPriceGet() {
-    const menu = await this.inputmenu();
+    this.menu = await this.inputmenu();
     let totalAmount = 0;
-    menu.forEach(([item, quantity]) => {
+    this.menu.forEach(([item, quantity]) => {
       totalAmount += this.matchingMenu([item, quantity]);
     });
-    OutputView.printTotalPrice(totalAmount);
+    this.menuType();
     return totalAmount;
   }
 
@@ -41,6 +40,20 @@ class MenuCalculation {
       }
     }
     return total;
+  }
+
+  menuType() {
+    let main = 0;
+    let dessert = 0;
+    this.menu.forEach(([item, quantity]) => {
+      if (item in ORDER_PRICE_MENU.MAIN) {
+        main += +quantity;
+      }
+      if (item in ORDER_PRICE_MENU.DESSERT) {
+        dessert += +quantity;
+      }
+    });
+    return [main, dessert];
   }
 }
 

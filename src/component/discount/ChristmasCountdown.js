@@ -3,16 +3,20 @@ import InputView from '../../InputView.js';
 import DayWeekDiscount from './DayWeekDiscount.js';
 
 class ChristmasCountdown {
-  // constructor() {}
+  constructor() {
+    this.xmas = 0;
+    this.dayWeek = '';
+    this.special = 0;
+  }
 
   async inputDate() {
     this.eventDate = await InputView.readDate();
     return +this.eventDate;
   }
 
-  async dicount() {
+  async discount() {
     this.eventDate = await this.inputDate();
-    this.xmasDiscount();
+    this.xmas = this.xmasDiscount();
     this.dayDiscount();
   }
 
@@ -21,16 +25,17 @@ class ChristmasCountdown {
       this.eventDate > DECEMBER_DATES.XMAS_DATE
         ? DECEMBER_DATES.XMAS_DATE
         : this.eventDate;
-    const xmas = Array(date)
-      .fill(100)
-      .reduce((acc, d) => acc + d, -100);
-    console.log(xmas);
+    const xmas =
+      Array(date)
+        .fill(100)
+        .reduce((acc, cur) => acc + cur, 1000) - 100;
     return xmas;
   }
 
   dayDiscount() {
-    const discounts = new DayWeekDiscount(this.eventDate);
-    console.log(discounts.discount);
+    const dayWeekDiscount = new DayWeekDiscount(this.eventDate);
+    this.dayWeek = dayWeekDiscount.divide;
+    this.special = dayWeekDiscount.discount;
   }
 }
 export default ChristmasCountdown;

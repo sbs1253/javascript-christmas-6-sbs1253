@@ -6,28 +6,57 @@ const OutputView = {
     Console.print('<주문 메뉴>');
     Console.print(`${item} ${quantity}개`);
   },
-  printGiftMenu(totalAmount) {
+
+  printGiftMenu(giftDiscount) {
     Console.print('<증정 메뉴>');
-    if (totalAmount >= GIFT_MENU.GIFT_PRICE) Console.print(GIFT_MENU.샴페인);
+    if (giftDiscount) Console.print(giftDiscount);
     else Console.print('없음');
   },
+
   printTotalPrice(totalAmount) {
     Console.print('<할인 전 총주문 금액>');
-    Console.print(`${totalAmount}원`);
-    this.printGiftMenu(totalAmount);
+    Console.print(`${totalAmount.toLocaleString('ko-KR')}원`);
   },
 
-  printBenefitDetails() {
+  printBenefitDetails([
+    xmas,
+    special,
+    [dayWeek, dayWeekDiscount],
+    giftDiscount,
+  ]) {
     Console.print('<혜택 내역>');
+    if (xmas)
+      Console.print(
+        `크리스마스 디데이 할인: -${xmas.toLocaleString('ko-KR')}원`,
+      );
+    else {
+      Console.print('0원');
+    }
+    if (dayWeekDiscount)
+      Console.print(
+        `${dayWeek} 할인: -${dayWeekDiscount.toLocaleString('ko-KR')}원`,
+      );
+    if (special)
+      Console.print(`특별 할인: -${special.toLocaleString('ko-KR')}원`);
+    if (giftDiscount)
+      Console.print(
+        `증정 이벤트: -${GIFT_MENU.GIFT_DISCOUNT.toLocaleString('ko-KR')}원`,
+      );
   },
-  printTotalBenefitAmount() {
+
+  printTotalBenefitAmount(totalDiscountAmount) {
     Console.print('<총혜택 금액>');
+    Console.print(`-${totalDiscountAmount}`);
   },
-  printEstimatedPaymentAmount() {
+
+  printEstimatedPaymentAmount(paymentAmount) {
     Console.print('<할인 후 예상 결제 금액>');
+    Console.print(`${paymentAmount.toLocaleString('ko-KR')}원`);
   },
-  printDecemberEventBadge() {
+
+  printDecemberEventBadge(eventBadge) {
     Console.print('<12월 이벤트 배지>');
+    Console.print(`${eventBadge}`);
   },
 };
 export default OutputView;
