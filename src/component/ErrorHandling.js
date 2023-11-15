@@ -1,4 +1,10 @@
-import { DECEMBER_DATES, ERROR_TEXT, ORDER_PRICE_MENU } from './data.js';
+import {
+  DECEMBER_DATES,
+  ERROR_TEXT,
+  ORDER_PRICE_MENU,
+  INIT_VALUES,
+  PRECAUTIONS,
+} from './data.js';
 
 export const dateValidation = (inputDate) => {
   if (
@@ -13,13 +19,13 @@ export const dateValidation = (inputDate) => {
 };
 
 class Precautions {
-  appetizer = 0;
+  appetizer = INIT_VALUES.INIT_NUMBER;
 
-  main = 0;
+  main = INIT_VALUES.INIT_NUMBER;
 
-  dessert = 0;
+  dessert = INIT_VALUES.INIT_NUMBER;
 
-  drink = 0;
+  drink = INIT_VALUES.INIT_NUMBER;
 
   constructor(menu, menuName) {
     this.menu = menu;
@@ -70,14 +76,17 @@ class Precautions {
     if (!this.menuName.some(([menu, _]) => item === menu)) {
       throw new Error(ERROR_TEXT.NOT_ORDER_TYPE);
     }
-    if (!(quantity >= 1)) {
+    if (!(quantity >= PRECAUTIONS.MIN_ORDER)) {
       throw new Error(ERROR_TEXT.NOT_ORDER_TYPE);
     }
   }
 
   drinkOrderNotAllowed() {
     const notDrink = this.main + this.dessert + this.appetizer;
-    if (notDrink === 0 && this.drink >= 1) {
+    if (
+      notDrink === PRECAUTIONS.ZERO_ORDER &&
+      this.drink >= PRECAUTIONS.MIN_ORDER
+    ) {
       throw new Error(ERROR_TEXT.NOT_ONLY_DRINK);
     }
   }
@@ -85,7 +94,7 @@ class Precautions {
   maximumOrderLimit() {
     const totalMenuOrder =
       this.main + this.dessert + this.appetizer + this.drink;
-    if (totalMenuOrder >= 20) {
+    if (totalMenuOrder >= PRECAUTIONS.MAX_ORDER) {
       throw new Error(ERROR_TEXT.MENU_MAX);
     }
   }

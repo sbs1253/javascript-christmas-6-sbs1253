@@ -23,8 +23,6 @@ class DayWeekDiscount {
     if (day === 0 || date.getDate() === 25) specialDiscount = 1000;
     return specialDiscount;
   }
-
-  // 평일과 주말은 구분했지만 할인률 적용시키는것은 메뉴 함수 구현후
 }
 
 export default DayWeekDiscount;

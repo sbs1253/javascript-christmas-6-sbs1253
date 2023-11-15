@@ -1,54 +1,84 @@
 import { Console } from '@woowacourse/mission-utils';
-import { GIFT_MENU } from './component/data.js';
+import { GIFT_MENU, INIT_VALUES, OUTPUT_TEXT } from './component/data.js';
 
 const OutputView = {
   printMenu(menu) {
-    Console.print('<주문 메뉴>');
+    Console.print(OUTPUT_TEXT.ORDER_MENU);
     menu.forEach(([item, quantity]) => {
-      Console.print(`${item} ${quantity}개`);
+      Console.print(`${item} ${quantity}${OUTPUT_TEXT.UNIT_QUANTITY}`);
     });
   },
 
   printGiftMenu(giftDiscount) {
-    Console.print('<증정 메뉴>');
+    Console.print(OUTPUT_TEXT.GIFT_MENU);
     if (giftDiscount) Console.print(giftDiscount);
-    else Console.print('없음');
+    else Console.print(OUTPUT_TEXT.NONE);
   },
 
   printTotalPrice(totalAmount) {
-    Console.print('<할인 전 총주문 금액>');
-    Console.print(`${totalAmount.toLocaleString('ko-KR')}원`);
+    Console.print(OUTPUT_TEXT.TOTAL_AMOUNT_BEFORE_DISCOUNT);
+    Console.print(
+      `${totalAmount.toLocaleString(OUTPUT_TEXT.LOCALE)}${
+        OUTPUT_TEXT.UNIT_CURRENCY
+      }`,
+    );
   },
 
   printXmasDiscount(xmas) {
     if (xmas) {
-      Console.print(`크리스마스 디데이 할인: -${xmas.toLocaleString('ko-KR')}원`);
+      Console.print(
+        `${OUTPUT_TEXT.XMAS}${xmas.toLocaleString(OUTPUT_TEXT.LOCALE)}${
+          OUTPUT_TEXT.UNIT_CURRENCY
+        }`,
+      );
     } else {
-      Console.print('없음');
+      Console.print(OUTPUT_TEXT.NONE);
     }
   },
 
   printDayWeekDiscount(dayWeek, dayWeekDiscount) {
     if (dayWeekDiscount) {
-      Console.print(`${dayWeek} 할인: -${dayWeekDiscount.toLocaleString('ko-KR')}원`);
+      Console.print(
+        `${dayWeek} ${
+          OUTPUT_TEXT.DAY_WEEK_DISCOUNT
+        }${dayWeekDiscount.toLocaleString(OUTPUT_TEXT.LOCALE)}${
+          OUTPUT_TEXT.UNIT_CURRENCY
+        }`,
+      );
     }
   },
 
   printSpecialDiscount(special) {
     if (special) {
-      Console.print(`특별 할인: -${special.toLocaleString('ko-KR')}원`);
+      Console.print(
+        `${OUTPUT_TEXT.SPECIAL}${special.toLocaleString(OUTPUT_TEXT.LOCALE)}${
+          OUTPUT_TEXT.UNIT_CURRENCY
+        }`,
+      );
     }
   },
 
   printGiftDiscount(giftDiscount) {
     if (giftDiscount) {
-      Console.print(`증정 이벤트: -${GIFT_MENU.GIFT_DISCOUNT.toLocaleString('ko-KR')}원`);
+      Console.print(
+        `${OUTPUT_TEXT.GIFT}${GIFT_MENU.GIFT_DISCOUNT.toLocaleString(
+          OUTPUT_TEXT.LOCALE,
+        )}${OUTPUT_TEXT.UNIT_CURRENCY}`,
+      );
     }
   },
 
   // 혜택 내역 출력
-  printBenefitDetails(xmas = 0, special = 0, [dayWeek, dayWeekDiscount] = [0, 0], giftDiscount = 0) {
-    Console.print('<혜택 내역>');
+  printBenefitDetails(
+    xmas = INIT_VALUES.INIT_NUMBER,
+    special = INIT_VALUES.INIT_NUMBER,
+    [dayWeek, dayWeekDiscount] = [
+      INIT_VALUES.INIT_NUMBER,
+      INIT_VALUES.INIT_NUMBER,
+    ],
+    giftDiscount = INIT_VALUES.INIT_NUMBER,
+  ) {
+    Console.print(OUTPUT_TEXT.DISCOUNT_DETAILS);
     this.printXmasDiscount(xmas);
     this.printDayWeekDiscount(dayWeek, dayWeekDiscount);
     this.printSpecialDiscount(special);
@@ -56,20 +86,25 @@ const OutputView = {
   },
 
   printTotalBenefitAmount(totalDiscountAmount) {
-    Console.print('<총혜택 금액>');
-    if (totalDiscountAmount) Console.print(`${-totalDiscountAmount}원`);
-    else Console.print('0원');
+    Console.print(OUTPUT_TEXT.TOTAL_DISCOUNT_AMOUNT);
+    if (totalDiscountAmount)
+      Console.print(`${-totalDiscountAmount}${OUTPUT_TEXT.UNIT_CURRENCY}`);
+    else Console.print(OUTPUT_TEXT.NONE_AMOUNT);
   },
 
   printEstimatedPaymentAmount(paymentAmount) {
-    Console.print('<할인 후 예상 결제 금액>');
-    Console.print(`${paymentAmount.toLocaleString('ko-KR')}원`);
+    Console.print(OUTPUT_TEXT.TOTAL_AMOUNT_AFTER_DISCOUNT);
+    Console.print(
+      `${paymentAmount.toLocaleString(OUTPUT_TEXT.LOCALE)}${
+        OUTPUT_TEXT.UNIT_CURRENCY
+      }`,
+    );
   },
 
   printDecemberEventBadge(eventBadge) {
-    Console.print('<12월 이벤트 배지>');
+    Console.print(OUTPUT_TEXT.EVENT_BADGE);
     if (eventBadge) Console.print(`${eventBadge}`);
-    else Console.print('없음');
+    else Console.print(OUTPUT_TEXT.NONE);
   },
 };
 export default OutputView;

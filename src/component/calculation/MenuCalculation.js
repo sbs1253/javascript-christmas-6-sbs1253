@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { Console } from '@woowacourse/mission-utils';
-import { ORDER_PRICE_MENU } from '../data.js';
+import { ORDER_PRICE_MENU, DECEMBER_DATES } from '../data.js';
 import InputView from '../../InputView.js';
 import Precautions from '../ErrorHandling.js';
 
@@ -12,8 +12,10 @@ class MenuCalculation {
 
   async inputmenu() {
     const inputMenu = await InputView.readMenu();
-    const menu = inputMenu.split(',').map((item) => item.split('-'));
-    return menu;
+    const menuAlignment = inputMenu
+      .split(',')
+      .map((item) => item.trim().split('-'));
+    return menuAlignment;
   }
 
   dataMenuGet() {
@@ -68,6 +70,15 @@ class MenuCalculation {
       }
     });
     return [main, dessert];
+  }
+
+  dayWeekDiscountCalculation(dayWeek) {
+    const [main, dessert] = this.menuType();
+    const dayWeekDiscount = DECEMBER_DATES.DAYWEEK_DISCOUNT;
+
+    if (dayWeek === DECEMBER_DATES.WEEKDAY) this.dayWeekDiscount *= dessert;
+    if (dayWeek === DECEMBER_DATES.WEEKEND) this.dayWeekDiscount *= main;
+    return dayWeekDiscount;
   }
 }
 
