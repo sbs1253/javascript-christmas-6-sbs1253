@@ -7,6 +7,7 @@ class ChristmasCountdown {
     this.xmas = 0;
     this.dayWeek = '';
     this.special = 0;
+    this.eventDate = 0;
   }
 
   async inputDate() {
@@ -27,8 +28,9 @@ class ChristmasCountdown {
         : this.eventDate;
     const xmas =
       Array(date)
-        .fill(100)
-        .reduce((acc, cur) => acc + cur, 1000) - 100;
+        .fill(DECEMBER_DATES.EVERYDAY_DISCOUNT)
+        .reduce((acc, cur) => acc + cur, DECEMBER_DATES.MIN_DISCOUNT) -
+      DECEMBER_DATES.EVERYDAY_DISCOUNT;
     return xmas;
   }
 

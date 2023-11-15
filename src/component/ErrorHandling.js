@@ -67,7 +67,7 @@ class Precautions {
   }
 
   orderType(item, quantity) {
-    if (item in this.menuName) {
+    if (!this.menuName.some(([menu, _]) => item === menu)) {
       throw new Error(ERROR_TEXT.NOT_ORDER_TYPE);
     }
     if (!(quantity >= 1)) {

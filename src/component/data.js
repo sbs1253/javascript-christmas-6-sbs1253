@@ -22,6 +22,8 @@ export const ORDER_PRICE_MENU = Object.freeze({
 });
 
 export const DECEMBER_DATES = Object.freeze({
+  MIN_DISCOUNT: 1000,
+  EVERYDAY_DISCOUNT: 100,
   MIN_DATE: 1,
   XMAS_DATE: 25,
   MAX_DATE: 31,
