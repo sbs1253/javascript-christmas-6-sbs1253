@@ -66,7 +66,7 @@ export const PRECAUTIONS = Object.freeze({
 });
 
 export const ERROR_TEXT = Object.freeze({
-  NUMBER: '[ERROR] 숫자는 1부터 31까지만 입력해 주세요.',
+  NUMBER: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   NOT_NUMBER: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   MENU: '[ERROR] 메뉴는 1개이상 입력해 주세요',
   NOT_ORDER_TYPE: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
@@ -86,7 +86,7 @@ export const OUTPUT_TEXT = Object.freeze({
   TOTAL_AMOUNT_AFTER_DISCOUNT: '<할인 후 예상 결제 금액>',
   EVENT_BADGE: '<12월 이벤트 배지>',
   XMAS: '크리스마스 디데이 할인: -',
-  DAY_WEEK_DISCOUNT: ' 할인: -',
+  DAY_WEEK_DISCOUNT: '할인: -',
   SPECIAL: '특별 할인: -',
   GIFT: '증정 이벤트: -',
   NONE: '없음',

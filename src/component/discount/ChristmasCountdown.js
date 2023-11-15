@@ -1,7 +1,6 @@
 import { DECEMBER_DATES } from '../data.js';
 import InputView from '../../InputView.js';
 import DayWeekDiscount from './DayWeekDiscount.js';
-import MenuCalculation from '../calculation/MenuCalculation.js';
 
 class ChristmasCountdown {
   constructor() {
@@ -39,11 +38,6 @@ class ChristmasCountdown {
     const dayWeekDiscount = new DayWeekDiscount(this.eventDate);
     this.dayWeek = dayWeekDiscount.divide;
     this.special = dayWeekDiscount.discount;
-    const menuCalculation = new MenuCalculation(this.dayWeek);
-    const dayWeekAmount = menuCalculation.dayWeekDiscountCalculation(
-      this.dayWeek,
-    );
-    return [dayWeekAmount, this.special, this.dayWeek];
   }
 }
 export default ChristmasCountdown;

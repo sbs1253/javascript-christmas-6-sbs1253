@@ -3,7 +3,6 @@ import ChristmasCountdown from '../../../src/component/discount/ChristmasCountdo
 
 describe('할인 기능 구현', () => {
   let christmasCountdown;
-
   beforeEach(() => {
     christmasCountdown = new ChristmasCountdown();
   });

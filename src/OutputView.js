@@ -9,12 +9,6 @@ const OutputView = {
     });
   },
 
-  printGiftMenu(giftDiscount) {
-    Console.print(OUTPUT_TEXT.GIFT_MENU);
-    if (giftDiscount) Console.print(giftDiscount);
-    else Console.print(OUTPUT_TEXT.NONE);
-  },
-
   printTotalPrice(totalAmount) {
     Console.print(OUTPUT_TEXT.TOTAL_AMOUNT_BEFORE_DISCOUNT);
     Console.print(
@@ -22,6 +16,11 @@ const OutputView = {
         OUTPUT_TEXT.UNIT_CURRENCY
       }`,
     );
+  },
+  printGiftMenu(giftDiscount) {
+    Console.print(OUTPUT_TEXT.GIFT_MENU);
+    if (giftDiscount) Console.print(giftDiscount);
+    else Console.print(OUTPUT_TEXT.NONE);
   },
 
   printXmasDiscount(xmas) {

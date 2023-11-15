@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { Console } from '@woowacourse/mission-utils';
-import { ORDER_PRICE_MENU, DECEMBER_DATES } from '../data.js';
+import { ORDER_PRICE_MENU } from '../data.js';
 import InputView from '../../InputView.js';
 import Precautions from '../ErrorHandling.js';
 
@@ -32,7 +32,6 @@ class MenuCalculation {
       const precautions = new Precautions(this.menu, this.prices);
       precautions.menuValidation();
       const totalAmount = this.totalAmountGet();
-      this.menuType();
       return totalAmount;
     } catch (error) {
       Console.print(error.message);
@@ -56,29 +55,6 @@ class MenuCalculation {
       }
     }
     return total;
-  }
-
-  menuType() {
-    let main = 0;
-    let dessert = 0;
-    this.menu.forEach(([item, quantity]) => {
-      if (item in ORDER_PRICE_MENU.MAIN) {
-        main += +quantity;
-      }
-      if (item in ORDER_PRICE_MENU.DESSERT) {
-        dessert += +quantity;
-      }
-    });
-    return [main, dessert];
-  }
-
-  dayWeekDiscountCalculation(dayWeek) {
-    const [main, dessert] = this.menuType();
-    const dayWeekDiscount = DECEMBER_DATES.DAYWEEK_DISCOUNT;
-
-    if (dayWeek === DECEMBER_DATES.WEEKDAY) this.dayWeekDiscount *= dessert;
-    if (dayWeek === DECEMBER_DATES.WEEKEND) this.dayWeekDiscount *= main;
-    return dayWeekDiscount;
   }
 }
 
